@@ -1,0 +1,66 @@
+const projects = [
+  {
+    slug: "walky-talky",
+    title: "Walky Talky",
+    tag: "Smart assistance cane for the visually impaired.",
+    iconName: "cane",
+    accent: "#C6F432",
+    award: "Best Project Award",
+    hackathon: "TechTonic - 1st Place",
+    image: "/projects/walky-talky.jpg",
+    imageFit: "contain",
+    description: [
+      "An IoT prototype built on a Raspberry Pi that runs real-time object detection on a live camera feed and converts the results into spoken cues. Users hear what's around them through wired or wireless headphones.",
+      "Ultrasonic sensors measure distance to nearby objects, while vibrating motors give haptic feedback when something is too close. The whole system is designed to feel like a natural extension of a walking cane - simple, quiet, and fast.",
+    ],
+    tech: ["Raspberry Pi", "Python", "OpenCV", "Object Detection", "TTS", "Ultrasonic Sensors", "ESP32"],
+  },
+  {
+    slug: "plant-doctor",
+    title: "Plant Doctor",
+    tag: "Diagnose plant disease from your phone camera.",
+    iconName: "leaf",
+    accent: "#B7CFA0",
+    award: "Featured at college Sustainability Forum",
+    image: "/projects/plant-doctor-result.jpg",
+    images: ["/projects/plant-doctor-app.jpg", "/projects/plant-doctor-result.jpg"],
+    imageFit: "contain",
+    description: [
+      "A mobile app that uses your phone camera to classify a plant and detect disease in its leaves. Built the ML model in TensorFlow Lite using a pretrained MobileNet backbone for fast on-device inference.",
+      "After detection, the app suggests possible remediations specific to that disease. Selected to represent the college's sustainable initiative forum for innovation and real-world utility.",
+    ],
+    tech: ["TensorFlow Lite", "MobileNet", "Computer Vision", "Mobile", "Transfer Learning"],
+  },
+  {
+    slug: "phishy",
+    title: "Phishy",
+    tag: "Browser extension that catches malicious QR-code links.",
+    iconName: "shield",
+    accent: "#F5C7CC",
+    award: "Optiv Cybersecurity Hackathon - 1st Place",
+    image: "/projects/phishy.jpg",
+    imageFit: "contain",
+    description: [
+      "A browser extension that takes a webcam video feed, decodes any QR codes on screen, and decides whether the embedded link is malicious - before you ever click it.",
+      "The classifier was trained in Google Colab and integrated via a Flask backend. Vectorization + classification with NumPy and scikit-learn, model loaded with pickle, OpenCV for live webcam capture, and HTML/CSS/JS for the extension UI.",
+    ],
+    tech: ["Python", "Flask", "scikit-learn", "OpenCV", "JavaScript", "HTML", "CSS"],
+  },
+  {
+    slug: "asl",
+    title: "ASL Learn",
+    tag: "Gamified American Sign Language learning, with live feedback.",
+    iconName: "hand_sign",
+    accent: "#7B6FE0",
+    award: "Technotackle - 1st Place",
+    image: "/projects/asl.jpg",
+    imageFit: "cover",
+    description: [
+      "A web app that helps people learn American Sign Language by gamifying the process. The webcam scores how accurately you're forming each sign and gives feedback in real time.",
+      "ASL adoption has grown sharply since the ADA, and learning it benefits educators, first responders, healthcare workers, and parents of deaf children. Early ASL exposure also strengthens kids' memory, multitasking, and visual-spatial skills.",
+    ],
+    tech: ["Computer Vision", "JavaScript", "HTML", "CSS", "Web Cam", "Gamification"],
+  },
+];
+
+export default projects;

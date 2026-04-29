@@ -1,0 +1,21 @@
+/** One mixed list — no separate "languages" / "tools" groups. */
+export default [
+  { name: "Python", icon: "snake" },
+  { name: "Agentic AI", icon: "ai" },
+  { name: "JavaScript", icon: "js" },
+  { name: "Power BI", icon: "chart" },
+  { name: "RAG", icon: "rag" },
+  { name: "HTML", icon: "html" },
+  { name: "Databricks", icon: "spark" },
+  { name: "Automation", icon: "auto" },
+  { name: "MySQL", icon: "db" },
+  { name: "CSS", icon: "css" },
+  { name: "Data Analytics", icon: "da" },
+  { name: "Microsoft Azure", icon: "cloud" },
+  { name: "Dashboards", icon: "dash" },
+  { name: "Java", icon: "cup" },
+  { name: "SSMS", icon: "server" },
+  { name: "Figma", icon: "pen" },
+  { name: "Cursor", icon: "spark" },
+  { name: "Arduino IDE", icon: "chip" },
+];
