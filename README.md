@@ -79,24 +79,15 @@ Use the same `NODE_OPTIONS` line before `npm install` whenever you are on that n
 
 ## Contact form (Formspree)
 
-The contact section uses [@formspree/react](https://formspree.io/). It only sends mail when a form ID is configured.
+The contact section uses [@formspree/react](https://formspree.io/). **By default** it posts to **https://formspree.io/f/mykogkzk** (form hash `mykogkzk` in `Contact.jsx`).
 
-1. Create a free account at [formspree.io](https://formspree.io).  
-2. Create a form and set the notification email (e.g. your Gmail).  
-3. Copy the form endpoint ID (looks like `xyzabcde`).
+To use a **different** form:
 
-In the `Portfolio` folder:
+1. Create a form at [formspree.io](https://formspree.io) and copy its ID.  
+2. Copy `.env.example` to `.env` (never commit `.env`).  
+3. Set `VITE_FORMSPREE_ID=your_other_id` and restart `npm run dev`.
 
-1. Copy `.env.example` to `.env` (never commit `.env` — it is in `.gitignore`).  
-2. Edit `.env`:
-
-   ```bash
-   VITE_FORMSPREE_ID=your_actual_form_id_here
-   ```
-
-3. Restart `npm run dev`.
-
-If `VITE_FORMSPREE_ID` is missing, the UI still works but shows a notice and submissions will not be delivered.
+The committed `.env.example` lists `mykogkzk` for reference.
 
 ---
 

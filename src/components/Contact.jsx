@@ -5,9 +5,12 @@ import PlumpyIcon from "./PlumpyIcon.jsx";
 import { DoodleSparkle } from "./Scribble.jsx";
 import { Send } from "lucide-react";
 
+// Form: https://formspree.io/f/mykogkzk — @formspree/react expects the form hash only.
+const FORMSPREE_DEFAULT = "mykogkzk";
+
 export default function Contact() {
-  const formId = import.meta.env.VITE_FORMSPREE_ID;
-  const [state, handleSubmit] = useForm(formId || "demo-form-id");
+  const formId = import.meta.env.VITE_FORMSPREE_ID || FORMSPREE_DEFAULT;
+  const [state, handleSubmit] = useForm(formId);
   const [touched, setTouched] = useState({});
 
   const fieldClass =
@@ -33,13 +36,6 @@ export default function Contact() {
         </div>
 
         <div className="relative bg-white/5 border border-white/10 rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-7">
-          {!formId && (
-            <p className="mb-4 text-sm bg-blush/20 border border-blush/40 text-blush rounded-lg px-3 py-2">
-              Heads up: set <code className="font-mono">VITE_FORMSPREE_ID</code> in
-              <code className="font-mono"> .env</code> to actually send messages.
-            </p>
-          )}
-
           <AnimatePresence mode="wait">
             {state.succeeded ? (
               <motion.div
