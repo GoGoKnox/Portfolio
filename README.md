@@ -1,75 +1,196 @@
 # Portfolio
 
-Personal portfolio of **Samhitha Naidu** — computer science engineer, data analyst, baker, writer, explorer.
+Personal portfolio of **Samhitha Naidu** — data analyst, software developer, baker, explorer, and more.
 
-Built with **Vite + React + Tailwind**, animated with **framer-motion**, and styled in a dark + neon-lime aesthetic with pastel and plumpy-icon flourishes. Mobile responsive.
+Built with **Vite + React + Tailwind CSS**, **framer-motion** for motion, and a dark + lime + pastel “plumpy” aesthetic. Layout is responsive for desktop and mobile.
 
-## Quick start
+**Repository:** [github.com/GoGoKnox/Portfolio](https://github.com/GoGoKnox/Portfolio)
 
-You'll need [Node.js 18+](https://nodejs.org/) installed (LTS is fine).
+---
+
+## What you need on your machine
+
+1. **[Node.js 18 or newer](https://nodejs.org/)** (LTS is recommended).  
+   Check: `node --version` and `npm --version` in a terminal.
+
+2. **[Git](https://git-scm.com/downloads)** (if you are cloning or pushing changes).  
+   Check: `git --version`
+
+---
+
+## Get the code (first time)
+
+If you do not have the folder yet:
 
 ```bash
+git clone https://github.com/GoGoKnox/Portfolio.git
 cd Portfolio
+```
+
+If you already have the project, open a terminal in the `Portfolio` folder (the one that contains `package.json`).
+
+### Windows: if `node` or `git` is “not recognized”
+
+- Restart the terminal (or VS Code / Cursor) after installing Node or Git.  
+- Or refresh `PATH` for the current PowerShell session:
+
+```powershell
+$env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
+```
+
+---
+
+## Install dependencies and run locally
+
+From inside the `Portfolio` directory:
+
+```bash
 npm install
 npm run dev
 ```
 
-The site opens at <http://localhost:5173>.
+Then open **http://localhost:5173** in your browser. The dev server supports hot reload: save a file and the page updates.
+
+### Corporate network / SSL (`SELF_SIGNED_CERT_IN_CHAIN`)
+
+On some corporate networks, `npm install` fails with a certificate error. Node can use the **Windows certificate store**:
+
+**PowerShell (same session as `npm install`):**
+
+```powershell
+$env:NODE_OPTIONS = "--use-system-ca"
+npm install
+npm run dev
+```
+
+Use the same `NODE_OPTIONS` line before `npm install` whenever you are on that network.
+
+---
+
+## npm scripts
+
+| Command           | What it does                                      |
+|------------------|---------------------------------------------------|
+| `npm run dev`    | Start dev server (default: http://localhost:5173) |
+| `npm run build`  | Production build → output in `dist/`              |
+| `npm run preview`| Serve the production build locally for a quick check |
+
+---
 
 ## Contact form (Formspree)
 
-The contact form posts to [Formspree](https://formspree.io). To wire it up:
+The contact section uses [@formspree/react](https://formspree.io/). It only sends mail when a form ID is configured.
 
-1. Sign up for a free Formspree account.
-2. Create a form whose destination is your Gmail (`b.samhithanaidu04@gmail.com`).
-3. Copy the form ID (looks like `xrgjzqkv`).
-4. Copy `.env.example` to `.env` and paste your ID:
+1. Create a free account at [formspree.io](https://formspree.io).  
+2. Create a form and set the notification email (e.g. your Gmail).  
+3. Copy the form endpoint ID (looks like `xyzabcde`).
+
+In the `Portfolio` folder:
+
+1. Copy `.env.example` to `.env` (never commit `.env` — it is in `.gitignore`).  
+2. Edit `.env`:
 
    ```bash
-   VITE_FORMSPREE_ID=xrgjzqkv
+   VITE_FORMSPREE_ID=your_actual_form_id_here
    ```
 
-5. Restart `npm run dev`.
+3. Restart `npm run dev`.
 
-Without an ID set, the form renders with a friendly warning and submissions won't go anywhere.
+If `VITE_FORMSPREE_ID` is missing, the UI still works but shows a notice and submissions will not be delivered.
 
-## Resume download
+---
 
-The hero section has a **download resume** button that links to `/resume.pdf`. To enable it:
+## Static files (photo, resume, project images)
 
-1. Drop your resume file at `Portfolio/public/resume.pdf` (it will be served from the site root).
-2. That's it — the button automatically downloads it as `Samhitha-Naidu-Resume.pdf`.
+Files in `public/` are served from the **site root** (e.g. `public/resume.pdf` → `/resume.pdf`).
 
-Until the file exists, the button shows up but downloading 404s.
+| File | Purpose |
+|------|--------|
+| `public/profile.jpg` | Hero / polaroid photo |
+| `public/resume.pdf` | “Download resume” button (`/resume.pdf`) |
+| `public/projects/*.jpg` | Project thumbnails (paths referenced in `src/data/projects.js`) |
+| `public/favicon.svg` | Browser tab icon |
 
-## Editing content
+After replacing an image or PDF, save the file with the **same name** or update the paths in `src/data/projects.js` (and components if you hard-code a path).
 
-All copy lives in `src/data/`:
+---
 
-- `experience.js` — JLL IT Ops Analyst, JLL SDE Intern, Pragya, ISAC
-- `projects.js` — Walky Talky, Plant Doctor, Phishy, ASL
-- `achievements.js` — hackathon wins
-- `skills.js` — mixed skill chips (single list)
-- `education.js` — (unused on site; section removed from page)
-- `extracurriculars.js` — U&I, NSS, Bhumi
+## Where to edit what
 
-Components live in `src/components/`. Hero photo is served from `public/profile.jpg`.
+### Copy and lists (easiest)
 
-## Build
+Most text lives in **`src/data/`**:
+
+| File | Content |
+|------|---------|
+| `experience.js` | Jobs, dates, locations, bullets, skill tags |
+| `projects.js` | Project titles, descriptions, images, tech tags |
+| `achievements.js` | Competitions, dates, blurbs |
+| `skills.js` | One mixed list of skill chips |
+| `extracurriculars.js` | Community / volunteering cards |
+| `education.js` | Present but **not** shown on the page (section removed from `App.jsx`) |
+
+Edit in any text editor, save, and refresh the dev page if hot reload does not pick it up.
+
+### Layout, sections, styling
+
+| Location | Role |
+|----------|------|
+| `src/App.jsx` | Which sections appear and in what order |
+| `src/components/*.jsx` | Section UI (Hero, Nav, Projects, etc.) |
+| `src/index.css` | Global CSS, Tailwind layers, utility classes |
+| `tailwind.config.js` | Colors, fonts, animations |
+
+### Environment
+
+| File | Role |
+|------|------|
+| `.env` | Local secrets (Formspree ID) — **do not commit** |
+| `.env.example` | Template only (safe to commit) |
+
+---
+
+## Git: commit and push to this repo
+
+Configure your name and email once (use the identity you want on GitHub):
 
 ```bash
-npm run build       # outputs to /dist
-npm run preview     # local preview of the build
+git config --global user.name "Your Name"
+git config --global user.email "your.email@example.com"
 ```
 
-## Hosting note
+Typical workflow after you change files:
 
-JLL policy requires InfoSec approval before deploying to external infrastructure (Vercel, Netlify, GitHub Pages, etc.). For prototyping, run locally on `http://localhost:5173`.
+```bash
+cd Portfolio
+git status
+git add -A
+git commit -m "Short description of what you changed"
+git pull origin main
+git push origin main
+```
 
-## Tech
+- If `git pull` reports conflicts, resolve them in the listed files, then `git add` those files and `git commit` before pushing again.
+- **HTTPS push** usually needs a [GitHub Personal Access Token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) as the password (not your GitHub account password).
 
-- React 18, Vite 5
-- Tailwind CSS 3
-- framer-motion
-- @formspree/react
-- lucide-react
+---
+
+## Hosting (important for some workplaces)
+
+Some employers require security approval before deploying to public hosting (Vercel, Netlify, GitHub Pages, etc.). Use **localhost** for personal prototyping unless you have approval. Building with `npm run build` is fine locally; uploading `dist/` to external infrastructure is a separate decision.
+
+---
+
+## Tech stack
+
+- React 18, Vite 5  
+- Tailwind CSS 3, PostCSS  
+- framer-motion  
+- @formspree/react  
+- lucide-react  
+
+---
+
+## Privacy note
+
+This repo may contain a **resume PDF**, **profile photo**, and **project screenshots**. If the repository is **public**, anyone on the internet can view them. Use private repo settings or remove/replace assets if you need to limit exposure.
