@@ -52,8 +52,8 @@ const experience = [
     location: "Bangalore, India",
     tagline: "Healthtech, but make it low-code and fast.",
     bullets: [
-      "Designed and optimized UI/UX dashboards for project management, focused on clarity and ease of use.",
-      "Built multiple applications in OutSystems, using low-code to compress project timelines.",
+      "Designed UI/UX dashboards for project management, focused on clarity and ease of use.",
+      "Built multiple applications in OutSystems, using low-code to compGained hands-on proficiency in OutSystems by building targeted mini-projects, mirroring the low-code architecture utilized by the core engineering teams to accelerate delivery timelines.",
       "Picked up Robotic Process Automation (RPA) and applied it to mini-projects that automated repetitive tasks and tightened workflows.",
       "Worked closely with the product team in a fast-paced healthtech setting, learning how digital tools translate to real clinical and operational impact.",
     ],
