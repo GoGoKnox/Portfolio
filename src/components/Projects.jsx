@@ -1,6 +1,6 @@
-import { useRef } from "react";
+//import { useRef } from "react";
 import { motion } from "framer-motion";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+//import { ChevronLeft, ChevronRight } from "lucide-react";
 import projects from "../data/projects.js";
 import PlumpyIcon from "./PlumpyIcon.jsx";
 import { DoodleSparkle, PixelCursor } from "./Scribble.jsx";
@@ -10,11 +10,11 @@ const FEATURED_SLUG = "walky-talky";
 export default function Projects() {
   const featured = projects.find((p) => p.slug === FEATURED_SLUG);
   const rest = projects.filter((p) => p.slug !== FEATURED_SLUG);
-  const rowRef = useRef(null);
+  //const rowRef = useRef(null);
 
-  const scrollBy = (delta) => {
-    rowRef.current?.scrollBy({ left: delta, behavior: "smooth" });
-  };
+  //const scrollBy = (delta) => {
+   // rowRef.current?.scrollBy({ left: delta, behavior: "smooth" });
+  //};
 
   return (
     <section
@@ -37,7 +37,7 @@ export default function Projects() {
 
         <div className="mt-8 sm:mt-10 flex items-end justify-between flex-wrap gap-3 mb-3">
           <h3 className="font-display text-lg sm:text-xl md:text-2xl">more from the workshop</h3>
-          <div className="flex items-center gap-2">
+          {/* <div className="flex items-center gap-2">
             <span className="hidden md:inline-flex items-center gap-1 text-cream/60 font-marker text-sm mr-2">
               <PixelCursor className="w-4 h-4" color="#C6F432" /> swipe me
             </span>
@@ -57,11 +57,14 @@ export default function Projects() {
             >
               <ChevronRight className="mx-auto" size={18} />
             </button>
-          </div>
+          </div> */}
+          <span className="hidden md:inline-flex items-center gap-1 text-cream/60 font-marker text-sm">
+          <PixelCursor className="w-4 h-4" color="#C6F432" /> swipe me
+          </span>
         </div>
 
         <div
-          ref={rowRef}
+          //ref={rowRef}
           className="scroll-snap-row -mx-4 sm:-mx-6 md:-mx-10 lg:-mx-16 px-4 sm:px-6 md:px-10 lg:px-16 flex md:flex-row flex-col gap-4 sm:gap-5 md:overflow-x-auto md:pb-3"
         >
           {rest.map((p) => (
